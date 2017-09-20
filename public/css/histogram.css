@@ -1,8 +1,22 @@
 h3 {
-	color: red;
+	color: crimson !important;
+}
+
+input {
+	margin-bottom: 10px;
 }
 
 #inputDiv, #histoDiv{
 	float: left;
-	margin: 10px 10px 10px 10px;
+	padding: 15px 15px 15px 15px;
+	margin: 15px 15px 15px 15px;
+	background: lightgray;
 }
+
+.label {
+	float: left;
+	display: block;
+	width: 100px;
+	margin-bottom: 10px;
+}
+
