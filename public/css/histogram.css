@@ -1,0 +1,8 @@
+h3 {
+	color: red;
+}
+
+#inputDiv, #histoDiv{
+	float: left;
+	margin: 10px 10px 10px 10px;
+}
