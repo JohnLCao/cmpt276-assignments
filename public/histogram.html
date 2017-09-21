@@ -8,21 +8,22 @@
 </head>
 
 <body>
+<script type="text/javascript" src="./javascript/calculate.js"></script>
 	<h1>Histogram Generator</h1>
 	<div id="inputDiv">
 		<h3>Lower bounds</h3>
-		<span class="label">Max</span> 	<input type="text" name="max"	value="100.0"/> <br/>
-		<span class="label">A+</span> 	<input type="text" name="ap" 	value="95.0"/> <br/>
-		<span class="label">A</span> 	<input type="text" name="a" 	value="90.0"/> <br/>
-		<span class="label">A-</span> 	<input type="text" name="am" 	value="85.0"/> <br/>
-		<span class="label">B+</span> 	<input type="text" name="bp" 	value="80.0"/> <br/>
-		<span class="label">B</span> 	<input type="text" name="b" 	value="75.0"/> <br/>
-		<span class="label">B-</span> 	<input type="text" name="bm" 	value="70.0"/> <br/>
-		<span class="label">C+</span> 	<input type="text" name="cp" 	value="65.0"/> <br/>
-		<span class="label">C</span> 	<input type="text" name="c" 	value="60.0"/> <br/>
-		<span class="label">C-</span> 	<input type="text" name="cm" 	value="55.0"/> <br/>
-		<span class="label">D</span> 	<input type="text" name="d" 	value="50.0"/> <br/>
-		<span class="label">F</span> 	<input type="text" name="f" 	value="0.0"/> <br/>
+		<span class="label">Max</span> 	<input type="text" name="max" 	onchange="calculate()" value="100.0"/> <br/>
+		<span class="label">A+</span> 	<input type="text" name="ap"	onchange="calculate()" value="95.0"/> <br/>
+		<span class="label">A</span> 	<input type="text" name="a" 	onchange="calculate()" value="90.0"/> <br/>
+		<span class="label">A-</span> 	<input type="text" name="am" 	onchange="calculate()" value="85.0"/> <br/>
+		<span class="label">B+</span> 	<input type="text" name="bp" 	onchange="calculate()" value="80.0"/> <br/>
+		<span class="label">B</span> 	<input type="text" name="b" 	onchange="calculate()" value="75.0"/> <br/>
+		<span class="label">B-</span> 	<input type="text" name="bm" 	onchange="calculate()" value="70.0"/> <br/>
+		<span class="label">C+</span> 	<input type="text" name="cp" 	onchange="calculate()" value="65.0"/> <br/>
+		<span class="label">C</span> 	<input type="text" name="c" 	onchange="calculate()" value="60.0"/> <br/>
+		<span class="label">C-</span> 	<input type="text" name="cm" 	onchange="calculate()" value="55.0"/> <br/>
+		<span class="label">D</span> 	<input type="text" name="d" 	onchange="calculate()" value="50.0"/> <br/>
+		<span class="label">F</span> 	<input type="text" name="f" 	onchange="calculate()" value="0.0"/> <br/>
 	</div>
 	<div id="histoDiv">
 		<h3>Histogram</h3>
@@ -38,6 +39,5 @@
 		<span class="label">D</span> 	<span class="hist" id="d"></span> 	<br/>
 		<span class="label">F</span> 	<span class="hist" id="f"></span> 	<br/>
 	</div>
-	<script type="text/javascript" src="./javascript/calculate.js"></script>
 </body>
 </html>
