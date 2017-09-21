@@ -2,7 +2,9 @@ h3 {
 	color: crimson !important;
 }
 
-input {
+input, .hist, .label {
+	float: left;
+	display: block;
 	margin-bottom: 10px;
 }
 
@@ -14,9 +16,6 @@ input {
 }
 
 .label {
-	float: left;
-	display: block;
 	width: 100px;
-	margin-bottom: 10px;
 }
 

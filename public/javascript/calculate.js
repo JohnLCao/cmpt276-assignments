@@ -2,10 +2,10 @@ var grades = [65.95, 56.98, 78.62, 96.1, 90.3, 72.24, 92.34, 60.00, 81.43, 86.22
 49.93, 52.34, 53.11, 50.10, 88.88, 55.32, 55.69, 61.68, 70.44, 70.54, 90.0, 71.11, 80.01];
 
 const bounds = ["max", "ap", "a", "am", "bp", "b", "bm", "cp", "c", "cm", "d", "f"];
-const letter_grades = ["ap", "a", "am", "bp", "b", "bm", "cp", "c", "cm", "d", "f"];
+// const letter_grades = ["ap", "a", "am", "bp", "b", "bm", "cp", "c", "cm", "d", "f"];
 
-var boundMap = {};
-var gradesMap = {};
+var boundMap = {}; //maps a letter grade to its lower bound
+var gradesMap = {}; //maps a letter grade to the number of students with that grade
 
 function calculate(){
 	getBoundValues();
@@ -33,6 +33,11 @@ function placeGrade(grade){
 
 function updateHistogram(){
 	console.log(gradesMap);
+	for (var grade in gradesMap){
+		let hist_size = gradesMap[grade];
+		document.getElementById(grade).innerHTML = new Array(hist_size + 1).join('O');
+	}
+
 }
 
 document.addEventListener("DOMContentLoaded", calculate);
