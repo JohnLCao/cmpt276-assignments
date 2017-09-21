@@ -38,7 +38,9 @@ function updateHistogram(){
 	console.log(gradesMap);
 	letter_grades.forEach(function(grade){
 		let hist_size = (gradesMap[grade]) ? gradesMap[grade] : 0;
-		document.getElementById(grade).innerHTML = new Array(hist_size + 1).join('O');
+		// document.getElementById(grade).innerHTML = new Array(hist_size + 1).join('O');
+		document.getElementById(grade).innerHTML = 
+			'<progress value=' + hist_size.toString() + ' max=' + grades.length.toString() + ' </progress>';
 	});
 }
 
