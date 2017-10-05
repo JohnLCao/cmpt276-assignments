@@ -1,3 +1,3 @@
 class Course < ActiveRecord::Base
-	has_many :enrolls
+	has_many :enrolls, dependent: :destroy
 end
