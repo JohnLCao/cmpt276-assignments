@@ -1,7 +1,6 @@
 class CreateEnrolls < ActiveRecord::Migration
   def change
-    create_table :enrolls, id: false do |t|
-      t.primary_key :course_id
+    create_table :enrolls do |t|
       t.integer :percentage
       t.string :lettergrade
 

@@ -16,31 +16,18 @@ ActiveRecord::Schema.define(version: 20171005212407) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "courses", force: :cascade do |t|
+  create_table "courses", primary_key: "course_id", force: :cascade do |t|
     t.string   "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
-  create_table "enrolls", primary_key: "course_id", force: :cascade do |t|
+  create_table "enrolls", force: :cascade do |t|
     t.integer  "percentage"
     t.string   "lettergrade"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
-
-  create_table "games", force: :cascade do |t|
-    t.integer  "difficulty"
-    t.string   "pgn"
-    t.string   "result"
-    t.string   "date"
-    t.string   "player_side"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "user_id"
-  end
-
-  add_index "games", ["user_id"], name: "index_games_on_user_id", using: :btree
 
   create_table "students", primary_key: "student_id", force: :cascade do |t|
     t.string   "name"
@@ -48,15 +35,5 @@ ActiveRecord::Schema.define(version: 20171005212407) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  create_table "users", force: :cascade do |t|
-    t.string   "username"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.string   "password_digest"
-    t.string   "email"
-  end
-
-  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
 end
