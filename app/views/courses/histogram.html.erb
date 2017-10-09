@@ -18,7 +18,7 @@
 	<h3>Histogram</h3>
 	<span class="label">A+</span>	<span class="hist" id="ap"></span> 	<br/>
 	<span class="label">A</span> 	<span class="hist" id="a"></span> 	<br/>
-	<span class="label">A-</span> 	<span class="hist" id="am"></span> 	<br/>
+	<span class="label">A-</span> 	<span class="hist" id="am"></span> 	<br/>		
 	<span class="label">B+</span> 	<span class="hist" id="bp"></span> 	<br/>
 	<span class="label">B</span> 	<span class="hist" id="b"></span> 	<br/>
 	<span class="label">B-</span> 	<span class="hist" id="bm"></span> 	<br/>
@@ -32,3 +32,8 @@
 <div class="submit-link">
 	<%=link_to 'Submit', course_path(@course)%>
 </div>
+<script type="text/javascript">
+	var grades = <%= Enroll.where({course_id: @course.id}).pluck(:percentage).to_json %>
+	// console.log(grades);
+</script>
+<script type="text/javascript" src="../../javascript/calculate.js"></script>
