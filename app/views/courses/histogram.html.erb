@@ -1,0 +1,34 @@
+<h1>Histogram Generator</h1>
+<div id="inputDiv">
+	<h3>Lower bounds</h3>
+	<span class="label">Max</span> 	<input type="text" name="max"  size="5" onchange="calculate()" value="100.0 "/> <br/>
+	<span class="label">A+</span> 	<input type="text" name="ap" size="5" onchange="calculate()" value="95.0 "/> <br/>
+	<span class="label">A</span> 	<input type="text" name="a"  size="5" onchange="calculate()" value="90.0 "/> <br/>
+	<span class="label">A-</span> 	<input type="text" name="am"  size="5" onchange="calculate()" value="85.0 "/> <br/>
+	<span class="label">B+</span> 	<input type="text" name="bp"  size="5" onchange="calculate()" value="80.0 "/> <br/>
+	<span class="label">B</span> 	<input type="text" name="b"  size="5" onchange="calculate()" value="75.0 "/> <br/>
+	<span class="label">B-</span> 	<input type="text" name="bm"  size="5" onchange="calculate()" value="70.0 "/> <br/>
+	<span class="label">C+</span> 	<input type="text" name="cp"  size="5" onchange="calculate()" value="65.0 "/> <br/>
+	<span class="label">C</span> 	<input type="text" name="c"  size="5" onchange="calculate()" value="60.0 "/> <br/>
+	<span class="label">C-</span> 	<input type="text" name="cm"  size="5" onchange="calculate()" value="55.0 "/> <br/>
+	<span class="label">D</span> 	<input type="text" name="d"  size="5" onchange="calculate()" value="50.0 "/> <br/>
+	<span class="label">F</span> 	<input type="text" name="f"  size="5" onchange="calculate()" value="0.0 "/> <br/>
+</div>
+<div id="histoDiv">
+	<h3>Histogram</h3>
+	<span class="label">A+</span>	<span class="hist" id="ap"></span> 	<br/>
+	<span class="label">A</span> 	<span class="hist" id="a"></span> 	<br/>
+	<span class="label">A-</span> 	<span class="hist" id="am"></span> 	<br/>
+	<span class="label">B+</span> 	<span class="hist" id="bp"></span> 	<br/>
+	<span class="label">B</span> 	<span class="hist" id="b"></span> 	<br/>
+	<span class="label">B-</span> 	<span class="hist" id="bm"></span> 	<br/>
+	<span class="label">C+</span> 	<span class="hist" id="cp"></span> 	<br/>
+	<span class="label">C</span> 	<span class="hist" id="c"></span> 	<br/>
+	<span class="label">C-</span> 	<span class="hist" id="cm"></span> 	<br/>
+	<span class="label">D</span> 	<span class="hist" id="d"></span> 	<br/>
+	<span class="label">F</span> 	<span class="hist" id="f"></span> 	<br/>
+</div>
+<br>
+<div class="submit-link">
+	<%=link_to 'Submit', course_path(@course)%>
+</div>

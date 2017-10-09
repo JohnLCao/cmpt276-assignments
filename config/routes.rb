@@ -56,4 +56,5 @@ Rails.application.routes.draw do
   resources :students
   resources :courses
   resources :enrolls
+  get '/a2/histogram/:id' => 'courses#histogram', as: :a2_histogram
 end

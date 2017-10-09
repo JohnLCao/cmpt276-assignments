@@ -1,3 +1,37 @@
 // Place all the styles related to the course controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+h3 {
+	color: crimson !important;
+}
+
+input, .hist, .label {
+	float: left;
+	display: block;
+	margin-bottom: 17px;
+}
+
+input, .hist {
+	margin-right: 80px;
+}
+
+input {
+	text-align: right;
+}
+
+#inputDiv, #histoDiv{
+	float: left;
+	padding: 3px 20px 20px 20px;
+	margin: 15px 15px 15px 15px;
+	background: lightgray;
+}
+
+.submit-link {
+	clear: left;
+}
+
+.label {
+	width: 100px;
+}
+
