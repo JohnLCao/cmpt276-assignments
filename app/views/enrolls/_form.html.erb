@@ -11,6 +11,24 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= f.label "student id" %><br>
+    <%= f.text_field :student_id %>
+    <br>
+    <%= f.label :course %><br>
+    <% if @enroll.persisted? %>
+      <%= f.text_field :course_name %>
+    <%else%>
+      <%= f.text_field :course %>
+    <%end%>
+    <br>
+    <%= f.label :percentage %><br>
+    <%= f.text_field :percentage %>
+    <br>
+    <%= f.label "letter grade" %><br>
+    <%= f.text_field :lettergrade %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

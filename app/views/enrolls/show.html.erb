@@ -1,4 +1,24 @@
 <p id="notice"><%= notice %></p>
 
+<p>
+  <strong>Student ID:</strong>
+  <%= @enroll.student_id %>
+</p>
+
+<p>
+  <strong>Course ID:</strong>
+  <%= @enroll.course_name %>
+</p>
+
+<p>
+  <strong>Percentage:</strong>
+  <%= @enroll.percentage %>
+</p>
+
+<p>
+  <strong>Grade:</strong>
+  <%= @enroll.lettergrade %>
+</p>
+
 <%= link_to 'Edit', edit_enroll_path(@enroll) %> |
 <%= link_to 'Back', enrolls_path %>

@@ -19,12 +19,14 @@ class EnrollsController < ApplicationController
 
   # GET /enrolls/1/edit
   def edit
+    # @enroll.course_id = Course.find(@enroll.course_id).course
   end
 
   # POST /enrolls
   # POST /enrolls.json
   def create
-    @enroll = Enroll.new(enroll_params)
+    processed = processed_params(enroll_params)
+    @enroll = Enroll.new(processed)
 
     respond_to do |format|
       if @enroll.save
@@ -40,8 +42,9 @@ class EnrollsController < ApplicationController
   # PATCH/PUT /enrolls/1
   # PATCH/PUT /enrolls/1.json
   def update
+    processed = processed_params(enroll_params)
     respond_to do |format|
-      if @enroll.update(enroll_params)
+      if @enroll.update(processed)
         format.html { redirect_to @enroll, notice: 'Enroll was successfully updated.' }
         format.json { render :show, status: :ok, location: @enroll }
       else
@@ -69,6 +72,17 @@ class EnrollsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def enroll_params
-      params.fetch(:enroll, {})
+      params.require(:enroll).permit(:student_id, :course, :course_name, :percentage, :lettergrade)
+    end
+
+    def processed_params args
+      if @enroll && @enroll.persisted?
+        args[:course_id] = Course.find_by({course: args[:course_name]}).id
+        args.delete(:course_name)
+      else 
+        args[:course_id] = Course.find_by({course: args[:course]}).id
+        args.delete(:course)          
+      end
+      return args
     end
 end
