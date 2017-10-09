@@ -11,6 +11,10 @@ class CoursesController < ApplicationController
   # GET /courses/1.json
   def show
     # get enrollments for this course
+    @courses = Enroll.where({course_id: @course.id})
+                     .select(:student_id, :percentage, :lettergrade)
+                     .to_a
+                     .map{|e| e.attributes}
   end
 
   # GET /courses/new

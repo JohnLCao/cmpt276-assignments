@@ -1,4 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_course_path(@course) %> |
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @courses.each do |course| %>
+      <tr>
+        <td><%= course["student_id"]%>, <%= course["percentage"]%>, <%= course["lettergrade"]%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
 <%= link_to 'Back', courses_path %>
