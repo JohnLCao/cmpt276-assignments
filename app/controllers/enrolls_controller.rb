@@ -54,6 +54,11 @@ class EnrollsController < ApplicationController
     end
   end
 
+  def update_from_hist
+    @enroll = Enroll.find(hist_params[:id])
+    @enroll.update(hist_params);
+  end
+
   # DELETE /enrolls/1
   # DELETE /enrolls/1.json
   def destroy
@@ -73,6 +78,10 @@ class EnrollsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def enroll_params
       params.require(:enroll).permit(:student_id, :course, :course_name, :percentage, :lettergrade)
+    end
+
+    def hist_params
+      params.require(:enroll).permit(:id, :student_id, :course_id, :percentage, :lettergrade)
     end
 
     def processed_params args
