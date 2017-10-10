@@ -25,14 +25,17 @@ class StudentsController < ApplicationController
   # POST /students.json
   def create
     @student = Student.new(student_params)
-
-    respond_to do |format|
-      if @student.save
-        format.html { redirect_to @student, notice: 'Student was successfully created.' }
-        format.json { render :show, status: :created, location: @student }
-      else
-        format.html { render :new }
-        format.json { render json: @student.errors, status: :unprocessable_entity }
+    if !Student.where({student_id: @student.id}).empty? # existing id
+      redirect_to students_path, notice: 'ERROR: Student ID already exists!'
+    else
+      respond_to do |format|
+        if @student.save
+          format.html { redirect_to @student, notice: 'Student was successfully created.' }
+          format.json { render :show, status: :created, location: @student }
+        else
+          format.html { render :new }
+          format.json { render json: @student.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
