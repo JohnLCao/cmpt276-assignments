@@ -19,11 +19,12 @@ Student.create!([
 	{student_id: 7, name: "Beric", email: "imiss@thoros"}
 ])
 
+ActiveRecord::Base.connection.reset_pk_sequence!('courses') # using postgres
 Course.create!([
-	{id: 1, course: "GoT 100", description: "how to ride dragons"},
-	{id: 2, course: "GoT 105", description: "how to fight white walkers"},
-	{id: 3, course: "GoT 200", description: "how to comeback from dead"},
-	{id: 4, course: "GoT 490", description: "how to win iron throne"}
+	{course: "GoT 100", description: "how to ride dragons"},
+	{course: "GoT 105", description: "how to fight white walkers"},
+	{course: "GoT 200", description: "how to comeback from dead"},
+	{course: "GoT 490", description: "how to win iron throne"}
 ])
 
 #start everyone with Fs and then calculate dynamically
