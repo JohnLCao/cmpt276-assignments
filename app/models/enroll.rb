@@ -3,6 +3,7 @@ class Enroll < ActiveRecord::Base
 	belongs_to :course
 	validates :student, presence: true
 	validates :course, presence: true
+	validates :student, uniqueness: {scope: :course}
 
 	def course_name
 		if self.persisted?
