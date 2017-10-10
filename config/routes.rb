@@ -58,4 +58,5 @@ Rails.application.routes.draw do
   resources :enrolls
   get '/a2/histogram/:id' => 'courses#histogram', as: :a2_histogram
   post '/update_from_hist' => 'enrolls#update_from_hist', as: :upgrade_from_hist
+  get '/home' => 'home#home', as: :home
 end
