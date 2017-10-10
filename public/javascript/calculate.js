@@ -14,6 +14,7 @@ function calculate(){
 	grades.forEach(function(g){
 		placeGrade(g);
 	});
+	gradesMap["ap"] = gradesMap["ap"] ? gradesMap["ap"] + gradesMap["max"] : gradesMap["max"];
 	updateHistogram();
 }
 
