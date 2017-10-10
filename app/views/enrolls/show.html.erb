@@ -6,6 +6,11 @@
 </p>
 
 <p>
+  <strong>Student Name:</strong>
+  <%= Student.find(@enroll.student_id).name %>
+</p>
+
+<p>
   <strong>Course Name:</strong>
   <%= @enroll.course_name %>
 </p>
