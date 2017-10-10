@@ -30,10 +30,79 @@
 </div>
 <br>
 <div class="submit-link">
-	<%=link_to 'Submit', course_path(@course)%>
+	<%=link_to 'Submit', course_path(@course), onclick: "update_grades()"%>
 </div>
 <script type="text/javascript">
+	<% @js_rb_convert = {
+		"max"=>"A+", "ap"=>"A+", "a"=>"A", "am"=>"A-", "bp"=>"B+", "b"=>"B",
+		"bm"=>"B-",  "cp"=>"C+", "c"=>"C", "cm"=>"C-", "d"=>"D", "f"=>"F"
+	}%>
 	var grades = <%= Enroll.where({course_id: @course.id}).pluck(:percentage).to_json %>
 	// console.log(grades);
 </script>
+
 <script type="text/javascript" src="../../javascript/calculate.js"></script>
+
+<script type="text/javascript">
+	var update_grades = function() {
+		<% Enroll.where({course_id: @course.id}).to_a.each do |enrollment| %>
+			var new_lettergrade = placeGrade(<%= enrollment.percentage %>, /*submit=*/true);
+			console.log(new_lettergrade);
+			switch (new_lettergrade){
+				case "max":
+					<% enrollment.lettergrade = "A+" %>
+					<% enrollment.save! %>
+					break;
+				case "ap": 
+					<% enrollment.lettergrade = "A+" %>
+					<% enrollment.save! %>
+					break;
+				case "a":
+					<% enrollment.lettergrade = "A" %>
+					<% enrollment.save! %>
+					break;				
+				case "am":
+					console.log("inside am");
+					<% enrollment.lettergrade = "A-" %>
+					<% enrollment.save! %>
+					break;				
+				case "bp":
+					console.log("inside bp");
+					<% enrollment.lettergrade = "B+" %>
+					<% enrollment.save! %>
+					break;				
+				case "b":
+					console.log("inside b");
+					<% enrollment.lettergrade = "B" %>
+					<% enrollment.save! %>
+					break;				
+				case "bm":
+					<% enrollment.lettergrade = "B-" %>
+					<% enrollment.save! %>
+					break;				
+				case "cp":
+					<% enrollment.lettergrade = "C+" %>
+					<% enrollment.save! %>
+					break;				
+				case "c":
+					<% enrollment.lettergrade = "C" %>
+					<% enrollment.save! %>
+					break;				
+				case "cm":
+					<% enrollment.lettergrade = "C-" %>
+					<% enrollment.save! %>
+					break;				
+				case "d":
+					<% enrollment.lettergrade = "D" %>
+					<% enrollment.save! %>
+					break;				
+				case "f":
+					<% enrollment.lettergrade = "F" %>
+					<% enrollment.save! %>
+					break;				
+				default:
+					break;
+			}
+		<% end %>
+	}
+</script>

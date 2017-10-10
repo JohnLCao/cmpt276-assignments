@@ -24,9 +24,12 @@ function getBoundValues(){
 	console.log(boundMap);
 }
 
-function placeGrade(grade){
+function placeGrade(grade, submit=false){
 	for (var bound in boundMap){
 		if (grade >= boundMap[bound]){
+			if (submit){
+				return bound;
+			}
 			// init to 1 if nothing recorded yet
 			gradesMap[bound] = (gradesMap[bound]) ? (gradesMap[bound] + 1) : 1;
 			break;
