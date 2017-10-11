@@ -25,16 +25,22 @@ class EnrollsController < ApplicationController
   # POST /enrolls
   # POST /enrolls.json
   def create
-    processed = processed_params(enroll_params)
-    @enroll = Enroll.new(processed)
-
-    respond_to do |format|
-      if @enroll.save
-        format.html { redirect_to @enroll, notice: 'Enroll was successfully created.' }
-        format.json { render :show, status: :created, location: @enroll }
-      else
-        format.html { render :new }
-        format.json { render json: @enroll.errors, status: :unprocessable_entity }
+    course_name = enroll_params[:course_name] || enroll_params[:course]
+    if Course.where({course: course_name}).empty?
+      redirect_to enrolls_path, notice: "ERROR: Course does not exist!"
+    elsif Student.where({student_id: enroll_params[:student_id]}).empty?
+      redirect_to enrolls_path, notice: "ERROR: Student does not exist!"
+    else      
+      processed = processed_params(enroll_params)
+      @enroll = Enroll.new(processed) 
+      respond_to do |format|
+        if @enroll.save
+          format.html { redirect_to @enroll, notice: 'Enroll was successfully created.' }
+          format.json { render :show, status: :created, location: @enroll }
+        else
+          format.html { render :new }
+          format.json { render json: @enroll.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
