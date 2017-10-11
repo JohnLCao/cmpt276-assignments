@@ -48,14 +48,21 @@ class EnrollsController < ApplicationController
   # PATCH/PUT /enrolls/1
   # PATCH/PUT /enrolls/1.json
   def update
-    processed = processed_params(enroll_params)
-    respond_to do |format|
-      if @enroll.update(processed)
-        format.html { redirect_to @enroll, notice: 'Enroll was successfully updated.' }
-        format.json { render :show, status: :ok, location: @enroll }
-      else
-        format.html { render :edit }
-        format.json { render json: @enroll.errors, status: :unprocessable_entity }
+    course_name = enroll_params[:course_name] || enroll_params[:course]
+    if Course.where({course: course_name}).empty?
+      redirect_to enrolls_path, notice: "ERROR: Course does not exist!"
+    elsif Student.where({student_id: enroll_params[:student_id]}).empty?
+      redirect_to enrolls_path, notice: "ERROR: Student does not exist!"
+    else 
+      processed = processed_params(enroll_params)
+      respond_to do |format|
+        if @enroll.update(processed)
+          format.html { redirect_to @enroll, notice: 'Enroll was successfully updated.' }
+          format.json { render :show, status: :ok, location: @enroll }
+        else
+          format.html { render :edit }
+          format.json { render json: @enroll.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
